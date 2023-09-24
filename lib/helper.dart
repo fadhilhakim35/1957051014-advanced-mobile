@@ -7,13 +7,9 @@ void main() {
   print(text);
 
   List angka = [1,2,3,4,5];
-  printList(
-    1,
-    2,
-    angka:2
-  );  
+  printList();  
 }
 
 void printList([List? l]){
-  print('cek');
+  print('List l');
 }
