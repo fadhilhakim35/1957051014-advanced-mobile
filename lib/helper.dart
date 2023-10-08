@@ -1,5 +1,3 @@
-import 'dart:io';
-
 void main() {
   String? nama;
 
@@ -7,7 +5,11 @@ void main() {
   print(text);
 
   List angka = [1,2,3,4,5];
-  printList();  
+  printList();
+
+  angka.forEach((element) {
+    print(element);
+  }); 
 }
 
 void printList([List? l]){
