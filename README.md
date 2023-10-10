@@ -1,15 +1,13 @@
-# justduit
+# JUSTDUIT
 
-A new Flutter project.
+Flutter project for advanced mobile course.
 
-## Getting Started
+### List of Content
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [01: Installation and Configure](https://github.com/fadhilhakim35/1957051014-advanced-mobile/tree/main)
+- [02: Dart](https://github.com/fadhilhakim35/1957051014-advanced-mobile/tree/02-dart)
+- [03: Basic Widget](https://github.com/fadhilhakim35/1957051014-advanced-mobile/tree/03-basic-widget)
+- [04: Login and Signup](https://github.com/fadhilhakim35/1957051014-advanced-mobile/tree/04-login-signup)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
