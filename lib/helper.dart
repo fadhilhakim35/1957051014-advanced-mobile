@@ -1,7 +1,15 @@
-void main() {
-  String? nama;
+import 'dart:io';
 
-  String text = nama ?? "Empty"; 
+late String? nama;
+void main() {
+  nama = stdin.readLineSync();
+  print("name: $nama");
+
+  var ex = ['a', 1, null, true, 0.02, 2.0];
+  print(ex);
+
+  String? pesan;
+  String text = pesan ?? "Empty"; 
   print(text);
 
   List angka = [1,2,3,4,5];
@@ -9,9 +17,9 @@ void main() {
 
   angka.forEach((element) {
     print(element);
-  }); 
+  });
 }
 
-void printList([List? l]){
+void printList([List? l]) {
   print('List l');
 }

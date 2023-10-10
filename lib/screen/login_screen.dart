@@ -40,7 +40,7 @@ class _FormScreenState extends State<FormScreen> {
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 24,
                         color: Colors.black
                       ),
                     ),
@@ -66,9 +66,9 @@ class _FormScreenState extends State<FormScreen> {
                       Text(
                         "Email Address",
                         style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.black
-                          ),
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
@@ -98,10 +98,10 @@ class _FormScreenState extends State<FormScreen> {
                     children: [
                       Text(
                         "Password",
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.black
-                          ),
+                        style: GoogleFonts.poppins(                          
+                          color: const Color.fromARGB(255, 5, 5, 5),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
@@ -131,7 +131,8 @@ class _FormScreenState extends State<FormScreen> {
                       "Forgot Password",
                       textAlign: TextAlign.right,
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(color: Colors.blue[800])),
+                        textStyle: TextStyle(color: Colors.blue[800])
+                      ),
                     ),
                   ),
 

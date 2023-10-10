@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:justduit/screen/form_screen.dart';
+import 'package:justduit/screen/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -11,15 +11,12 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController nameController = TextEditingController();
-  bool isNameValid = true;
-
   TextEditingController emailController = TextEditingController();
-  bool isEmailValid = true;
-
   TextEditingController passwordController = TextEditingController();
-  bool isPasswordValid = true;
-
   TextEditingController confirmController = TextEditingController();
+  bool isNameValid = true;
+  bool isEmailValid = true;
+  bool isPasswordValid = true;
   bool isConfirmValid = true;
 
   @override
@@ -235,6 +232,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FormScreen()));
                       },
                       child: Text(
                         "Sign In",
