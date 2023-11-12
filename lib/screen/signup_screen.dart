@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:justduit/screen/login_screen.dart';
+import 'package:justduit/screen/root_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -18,6 +19,30 @@ class _SignupScreenState extends State<SignupScreen> {
   bool isEmailValid = true;
   bool isPasswordValid = true;
   bool isConfirmValid = true;
+
+  void setValue(String name, String email) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("name", name);
+    await prefs.setString("email", email);
+  }
+
+  void redirect() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("name")) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => rootScreen(),
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    redirect();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -207,42 +232,68 @@ class _SignupScreenState extends State<SignupScreen> {
 
                   //Submit Button
                   SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          isNameValid = nameController.text.isNotEmpty;
-                          isEmailValid = emailController.text.isNotEmpty;
-                          isPasswordValid = passwordController.text.isNotEmpty;
-                          isConfirmValid = confirmController.text == passwordController.text;
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
-                      child: Text(
-                        "Continue",
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue),
+                          onPressed: () async {
+                            setState(() {
+                              isEmailValid =
+                                  emailController.text.contains('@') &&
+                                      emailController.text.isNotEmpty;
+                              isNameValid = nameController.text.isNotEmpty;
+                              isPasswordValid = passwordController.text.isNotEmpty;
+                              isConfirmValid =
+                                  passwordController.text == confirmController.text &&
+                                      confirmController.text.isNotEmpty &&
+                                      isPasswordValid;
+                            });
 
-                  //Signin Button
-                  Center(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FormScreen()));
-                      },
-                      child: Text(
-                        "Sign In",
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(color: Colors.grey),
+                            if (isConfirmValid && isEmailValid && isNameValid) {
+                              setValue(
+                                  nameController.text, emailController.text);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (builder) => rootScreen(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Text(
+                              "Continue",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      // //Signin Button
+                      // Center(
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       Navigator.pop(context);
+                      //       Navigator.push(context, MaterialPageRoute(builder: (context) => FormScreen()));
+                      //     },
+                      //     child: Text(
+                      //       "Sign In",
+                      //       style: GoogleFonts.poppins(
+                      //         textStyle: TextStyle(color: Colors.grey),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                    ],
                   ),
-                ],
+                ),],
               ),
             ),
           ],
